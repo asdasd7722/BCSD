@@ -1,8 +1,8 @@
 package org.example.controller;
 
 
-import org.example.domain.User;
-import org.example.service.UserService;
+import org.example.domain.Board;
+import org.example.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,37 +12,37 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/users")
-public class UserController {
+@RequestMapping("/boards")
+public class BoardController {
 
-    private final UserService userService;
+    private final BoardService boardService;
 
     @Autowired
-    public UserController(UserService userService) {
-        this.userService = userService;
+    public BoardController(BoardService boardService) {
+        this.boardService = boardService;
     }
 
     @PostMapping()
-    public String createUser(@RequestBody User user) {
-        userService.createUser(user);
+    public String createBoard(@RequestBody Board board) {
+        boardService.createBoard(board);
 
-        return "create user";
+        return "create board";
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public User UserInfo(@PathVariable("id") Long id) {
-        return userService.getUserInfo(id);
+    public Board BoardInfo(@PathVariable("id") Long id) {
+        return boardService.getBoardInfo(id);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public User updateUser(User user, @PathVariable String id) {
-        return userService.updateUserInfo(user);
+    public Board updateBoard(Board board) {
+        return boardService.updateBoardInfo(board);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public String deleteUser(@PathVariable("id") Long id) {
-        userService.deleteUser(id);
-        return "delete user";
+    public String deleteBoard(@PathVariable("id") Long id) {
+        boardService.deleteBoard(id);
+        return "delete Board";
     }
 
 }
