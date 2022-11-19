@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.repository.UserMapper">
+    <insert id="createUser" parameterType="org.example.domain.User">
+        INSERT INTO user
+            (account, password, name)
+        VALUES (#{account}, #{password}, #{name})
+    </insert>
+
+    <select id="getUserById" parameterType="Long" resultType="org.example.domain.User">
+        SELECT ID, account, password, name
+        FROM user
+        WHERE ID = #{ID}
+    </select>
+
+    <update id="updateUser" parameterType="org.example.domain.User">
+        UPDATE user
+        SET ID=#{ID}, account=#{account}, password=#{passwrod}, name=#{name}
+        WHERE ID = #{ID}
+    </update>
+
+    <delete id="deleteUserById" parameterType="org.example.domain.User">
+        DELETE
+        FROM user
+        WHERE ID = #{ID}
+    </delete>
+</mapper>
