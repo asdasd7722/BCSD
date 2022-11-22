@@ -16,7 +16,7 @@
 
     <update id="updateUser" parameterType="org.example.domain.User">
         UPDATE user
-        SET ID=#{ID}, account=#{account}, password=#{passwrod}, name=#{name}
+        SET ID=#{ID}, account=#{account}, password=#{password}, name=#{name}
         WHERE ID = #{ID}
     </update>
 

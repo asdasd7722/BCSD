@@ -10,7 +10,7 @@ public interface UserMapper {
 
     User getUserById(Long id);
 
-    User updateUser(User user);
+    void updateUser(User user, Long id);
 
     void deleteUserById(Long id);
 }
